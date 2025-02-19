@@ -1,5 +1,6 @@
 import './App.css';
 import { useAuth0 } from '@auth0/auth0-react';
+import HomePage from './components/Homepage';
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
 
   return (
     <>
+    <HomePage/>
     {isAuthenticated && <h3>Hello , {user.name}</h3>}
     {
         isAuthenticated ? <button onClick={ (e) => {logout()}}>Logout</button> : <button onClick={ (e) => loginWithRedirect()}>Login</button>
