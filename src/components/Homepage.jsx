@@ -1,21 +1,31 @@
 import { Link } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function HomePage() {
+
+    
+    const { user , loginWithRedirect , isAuthenticated , logout} = useAuth0();
+    console.log("current user : ",user);
+
     const games = [
-        { name: "Poker", img: "/poker.jpg", path: "/" },
-        { name: "Blackjack", img: "/blackjack.jpg", path: "/" },
-        { name: "Solitaire", img: "/solitaire.jpg", path: "/" },
+        { name: "Poker", img: "/poker.jpg", path: "/Test" },
+        { name: "Blackjack", img: "/blackjack.jpg", path: "/Test" },
+        { name: "Solitaire", img: "/solitaire.jpg", path: "/Test" },
     ];
 
     return (
         <div className="min-h-screen bg-gray-900 text-white">
+            {isAuthenticated && <h3>Hello , {user.name}</h3>}
+    {
+        isAuthenticated ? <button onClick={ (e) => {logout()}}>Logout</button> : <button onClick={ (e) => loginWithRedirect()}>Login</button>
+    }
             {/* Navbar */}
             <nav className="flex justify-between items-center p-4 bg-gray-800">
                 <h1 className="text-2xl font-bold">Card Games</h1>
                 <div className="space-x-4">
-                    <Link to="/" className="hover:text-gray-400">Home</Link>
+                    {/*<Link to="/" className="hover:text-gray-400">Home</Link>
                     <Link to="/leaderboard" className="hover:text-gray-400">Leaderboard</Link>
-                    <Link to="/settings" className="hover:text-gray-400">Settings</Link>
+    <Link to="/settings" className="hover:text-gray-400">Settings</Link>*/}
                 </div>
             </nav>
 
@@ -26,7 +36,7 @@ export default function HomePage() {
             </header>
 
             {/* Game Selection Grid */}
-            <section className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
+            {/*<section className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
                 {games.map((game) => (
                     <Link
                         key={game.name}
@@ -37,7 +47,7 @@ export default function HomePage() {
                         <h3 className="text-xl mt-2">{game.name}</h3>
                     </Link>
                 ))}
-            </section>
+                </section>*/}
 
             {/* Footer */}
             <footer className="text-center py-6 text-gray-400">
