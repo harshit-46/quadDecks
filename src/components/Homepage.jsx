@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
 
 export default function HomePage() {
-
     
     const { user , loginWithRedirect , isAuthenticated , logout} = useAuth0();
     console.log("current user : ",user);
@@ -21,7 +20,7 @@ export default function HomePage() {
     }
             {/* Navbar */}
             <nav className="flex justify-between items-center p-4 bg-gray-800">
-                <h1 className="text-2xl font-bold">Card Games</h1>
+                <h1 className="text-2xl font-bold">Quad Decks</h1>
                 <div className="space-x-4">
                     {/*<Link to="/" className="hover:text-gray-400">Home</Link>
                     <Link to="/leaderboard" className="hover:text-gray-400">Leaderboard</Link>
